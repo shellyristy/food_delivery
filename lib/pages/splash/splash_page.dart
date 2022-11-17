@@ -2,11 +2,7 @@
 
 import 'dart:async';
 
-import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/routes/route_helper.dart';
@@ -40,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);
 
-    Timer(Duration(seconds: 3), () => Get.offNamed(RouteHelper.getInitial()));
+    Timer(const Duration(seconds: 3), () => Get.offNamed(RouteHelper.getInitial()));
   }
 
   @override

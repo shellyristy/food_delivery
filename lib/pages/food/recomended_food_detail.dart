@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
-import 'package:food_delivery/pages/cart/cart_page.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -44,7 +43,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                       Get.toNamed(RouteHelper.getInitial());
                     }
                   },
-                  child: AppIcon(icon: Icons.clear),
+                  child: const AppIcon(icon: Icons.clear),
                 ),
                 // AppIcon(icon: Icons.shopping_cart_outlined)
                 GetBuilder<PopularProductController>(
@@ -57,9 +56,9 @@ class RecommendedFoodDetail extends StatelessWidget {
                         },
                       child: Stack(
                         children: [
-                          AppIcon(icon: Icons.shopping_cart_outlined),
+                          const AppIcon(icon: Icons.shopping_cart_outlined),
                           Get.find<PopularProductController>().totalItems >= 1
-                              ? Positioned(
+                              ? const Positioned(
                                   right: 0,
                                   top: 0,
                                     child: AppIcon(

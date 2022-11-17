@@ -1,20 +1,33 @@
-// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, avoid_unnecessary_containers
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print, avoid_unnecessary_containers, sort_child_properties_last, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/pages/home/food_page_body.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 
-class MainFoodPage extends StatelessWidget {
+import '../../controllers/popular_product_controller.dart';
+
+ class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
 
   @override
+  _MainFoodPageState createState() => _MainFoodPageState();
+}
+
+class _MainFoodPageState extends State<MainFoodPage>{
+  Future<void> _loadResource() async {
+    await Get.find<PopularProductController>().getPopularProductList();
+    await Get.find<RecommendedProductController>().getRecommendedProductList();
+  }
+  @override
   Widget build(BuildContext context) {
-    print("current height is " + MediaQuery.of(context).size.height.toString());
-    return Scaffold(
-        body: Column(
+    
+    return RefreshIndicator(child: Column(
       children: [
         Container(
           child: Container(
@@ -64,6 +77,8 @@ class MainFoodPage extends StatelessWidget {
           child: FoodPageBody(),
         )),
       ],
-    ));
-  }
+    ),
+  onRefresh: _loadResource); 
+ 
+ }
 }

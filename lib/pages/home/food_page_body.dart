@@ -1,9 +1,8 @@
-// ignore_for_file: unnecessary_new, sized_box_for_whitespace
+// ignore_for_file: unnecessary_new, sized_box_for_whitespace, prefer_interpolation_to_compose_strings
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
-import 'package:food_delivery/pages/food/popular_food_detail.dart';
 import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
@@ -63,7 +62,7 @@ class _VeggiePageBodyState extends State<FoodPageBody> {
                             popularProducts.popularProductList[position]);
                       }),
                 )
-              : CircularProgressIndicator(
+              : const CircularProgressIndicator(
                   color: AppColors.mainColor,
                 );
         },
@@ -110,7 +109,6 @@ class _VeggiePageBodyState extends State<FoodPageBody> {
           ],
         ),
       ),
-      
       GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
         return recommendedProduct.isLoaded
             ? ListView.builder(
@@ -120,7 +118,8 @@ class _VeggiePageBodyState extends State<FoodPageBody> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.toNamed(RouteHelper.getRecommendedFood(index, "home"));
+                      Get.toNamed(
+                          RouteHelper.getRecommendedFood(index, "home"));
                     },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -202,7 +201,7 @@ class _VeggiePageBodyState extends State<FoodPageBody> {
                     ),
                   );
                 })
-            : CircularProgressIndicator(
+            : const CircularProgressIndicator(
                 color: AppColors.mainColor,
               );
       })
@@ -243,7 +242,8 @@ class _VeggiePageBodyState extends State<FoodPageBody> {
             onTap: () {
               Get.toNamed(RouteHelper.getPopularFood(index, "home"));
             },
-            child: Container(
+            child: 
+            Container(
               height: 220,
               margin: const EdgeInsets.only(left: 10, right: 10),
               decoration: BoxDecoration(

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_interpolation_to_compose_strings, avoid_print
+
 import 'dart:convert';
 
 import 'package:food_delivery/models/cart_model.dart';

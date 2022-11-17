@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals, no_leading_underscores_for_local_identifiers, prefer_is_empty, sized_box_for_whitespace, prefer_interpolation_to_compose_strings
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -63,7 +65,7 @@ class CartHistory extends StatelessWidget {
             height: 100,
             color: AppColors.mainColor,
             width: double.maxFinite,
-            padding: EdgeInsets.only(top: 45),
+            padding: const EdgeInsets.only(top: 45),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

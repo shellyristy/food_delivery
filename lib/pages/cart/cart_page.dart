@@ -1,5 +1,8 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_is_empty, sized_box_for_whitespace, curly_braces_in_flow_control_structures, avoid_print, prefer_const_constructors, prefer_interpolation_to_compose_strings
+
 import 'package:flutter/material.dart';
 import 'package:food_delivery/base/no_data_page.dart';
+import 'package:food_delivery/controllers/auth_controller.dart';
 import 'package:food_delivery/controllers/cart_controller.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
@@ -266,9 +269,12 @@ class CartPage extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // popularProduct.addItem(product);
+                    if (Get.find<AuthController>().userLoggedin()) {
                     print("tapped");
                     cartController.addToHistory();
+                    }else{
+                      Get.toNamed(RouteHelper.getSignInPage());
+                    }
                   },
                   child: Container(
                     padding: EdgeInsets.only(
